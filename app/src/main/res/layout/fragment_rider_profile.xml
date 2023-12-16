@@ -51,6 +51,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/userName_profile_picture_tv"
                         android:text="@string/mohamed"
                         android:textAlignment="center"
                         android:textSize="20sp"
@@ -125,6 +126,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/userName_profile_tv"
                         android:textColor="#6E6C6C"
                         android:text="@string/mohamed"
                         android:fontFamily="@font/poppinsmedium"
@@ -151,6 +153,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/mobile_profile_tv"
                         android:textColor="#6E6C6C"
                         android:text="@string/mobile_number"
                         android:fontFamily="@font/poppinsmedium"
@@ -177,6 +180,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/email_profile_tv"
                         android:textColor="#6E6C6C"
                         android:text="@string/axxxxxxa_gmail_com"
                         android:fontFamily="@font/poppinsmedium"
