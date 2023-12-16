@@ -9,8 +9,6 @@ public class Employee extends User{
     public Employee() {
     }
 
-
-
     public Employee(String name, String email, String phoneNumber) {
         super(name, email, phoneNumber);
     }
