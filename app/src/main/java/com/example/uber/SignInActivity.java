@@ -128,10 +128,11 @@ public class SignInActivity extends AppCompatActivity {
                     }
                         else if(moduleOption==2){
                              intent = new Intent(getBaseContext(), RiderActivity.class);
+
                         }
                         else if(moduleOption==3)
                         intent = new Intent(getBaseContext(), DriverActivity.class);
-                    intent.putExtra("phoneNo", phone);
+                        intent.putExtra("phoneNo", phone);
                         intent.putExtra("moduleOption", moduleOption);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

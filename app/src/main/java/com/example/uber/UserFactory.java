@@ -11,8 +11,7 @@ public class UserFactory {
             return new Driver(name,email,phoneNo);
         }
         else if (userType.equalsIgnoreCase("Employee")){
-
-            return new Employee(name,email,phoneNo);
+            return Employee.getInstance(name,email,phoneNo);
         }
         return null;
     }

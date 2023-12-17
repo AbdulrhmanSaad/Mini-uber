@@ -1,0 +1,375 @@
+@startuml
+interface CheckerHandler {
+~ void handle()
+}
+class FormatChecker {
++ {static} boolean isValidEmail(String)
++ {static} boolean isValidPhoneNo(String)
++ {static} boolean isValidCarYear(String)
+}
+class Trip {
+- String pickUpPoint
+- String destination
+- String time
+- Driver driver
+- Rider rider
+- float carFare
++ <<Create>> Trip(String,String,String,String,float,String)
++ <<Create>> Trip(String,String,String,String)
++ <<Create>> Trip()
++ Driver getDriver()
++ void setDriver(Driver)
++ Rider getRider()
++ void setRider(Rider)
++ float getCarFare()
++ void setCarFare(float)
++ String getPickUpPoint()
++ void setPickUpPoint(String)
++ String getDestination()
++ void setDestination(String)
++ String getTime()
++ void setTime(String)
+}
+class AssignCarToDriverFragment {
+- EditText etCarPlateNo
+- AppCompatButton assignCar
+- ProgressBar progressBar
+- String carRowID
+- String oldCarRowID
+- String driverRowID
+- DatabaseReference carsRef
+- DatabaseReference driversRef
+~ RecyclerView rvCars
+~ RecyclerView rvDrivers
+- ArrayList<Car> availableCars
+- ArrayList<Driver> driversWithoutCars
+- AvailableCarsAdapter availableCarsAdapter
+- DriversWithoutCarsAdapter driversWithoutCarsAdapter
++ <<Create>> AssignCarToDriverFragment()
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void initialize(View)
+- void getAllFreeCars()
+- void getAllDriversWithoutCar()
+- Car getCarFromFireBase(DataSnapshot,String)
+- Driver getDriverFromFireBase(DataSnapshot,String)
+- void addCarToAvailableCars(Driver)
+}
+class ModuleSelectorActivity {
+- AppCompatButton driverButton
+- AppCompatButton riderButton
+- AppCompatButton employeeButton
+# void onCreate(Bundle)
+~ void setEmployeeButton()
+~ void setRiderButton()
+~ void setDriverButton()
+}
+class SignOption {
++ {static} int SIGN_UP_MODE
++ {static} int SIGN_IN_MODE
+}
+class Driver {
+- String drivingLicense
+- String carPlateNumber
+- Car car
+- Location location
++ <<Create>> Driver()
++ <<Create>> Driver(String,String,String)
++ <<Create>> Driver(String,String,String,String,String)
++ <<Create>> Driver(String,String,String,float,String,String)
++ String getDrivingLicense()
++ void setDrivingLicense(String)
++ String getCarPlateNumber()
++ void setCarPlateNumber(String)
+}
+class FireBaseChecker {
+- Context context
+- DatabaseReference myRef
+- ProgressBar progressBar
++ <<Create>> FireBaseChecker(int,Context,ProgressBar)
++ void checkIfUserHasAnExistingAccountUponSigningIn(String,CheckerHandler)
++ void checkIfUserHasAnExistingAccountUponSignUp(User,CheckerHandler)
++ void checkIfCarExists(Car,CheckerHandler)
++ void signInUser(String)
++ void createUserAccount(User)
+}
+class Car {
+- String model
+- int year
+- String color
+- String plateNumber
+- String driverPhoneNo
+- Driver driver
+- Location location
++ <<Create>> Car(String,int,String,String,String)
++ <<Create>> Car(String,int,String,String)
++ <<Create>> Car()
++ String getModel()
++ void setModel(String)
++ int getYear()
++ void setYear(int)
++ String getColor()
++ void setColor(String)
++ String getPlateNumber()
++ void setPlateNumber(String)
++ String getDriverPhoneNo()
++ void setDriverPhoneNo(String)
+}
+class AddTrip {
+~ EditText puckUpPoint
+~ AppCompatButton confirm
+~ ProgressBar progressBar
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initialize(View)
++ void addTrip(Trip)
+}
+class OnBoardActivity {
+~ ViewPager onBoardViewPager
+~ SliderAdapter sliderAdapter
+~ AppCompatButton onBoardButton
+# void onCreate(Bundle)
+- void setAdapter()
+}
+class SliderAdapter {
+~ Context context
+~ LayoutInflater layoutInflater
++ int[] sliderImages
++ String[] sliderTitles
++ String[] sliderDesc
++ <<Create>> SliderAdapter(Context)
++ int getCount()
++ boolean isViewFromObject(View,Object)
++ Object instantiateItem(ViewGroup,int)
++ void destroyItem(ViewGroup,int,Object)
+}
+class AvailableCarsAdapter {
+~ ArrayList<Car> cars
++ <<Create>> AvailableCarsAdapter(ArrayList<Car>)
++ AvailableCarsViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(AvailableCarsViewHolder,int)
++ int getItemCount()
+}
+class AvailableCarsAdapter$AvailableCarsViewHolder {
+~ TextView carPlateNo
++ <<Create>> AvailableCarsViewHolder(View)
+}
+class EmployeeActivity {
+- NavigationView navigationView
+- DrawerLayout drawerLayout
+- DatabaseReference empRef
+# void onCreate(Bundle)
+- void signOutEmployee()
+- void initialize()
+- void replaceFragment(Fragment)
+}
+class Rider {
+- Location location
++ <<Create>> Rider(String,String,String)
++ <<Create>> Rider(String,String,String,float)
++ <<Create>> Rider()
+}
+class RiderActivity {
+~ String phoneNo
+- NavigationView navigationView
+- DrawerLayout drawerLayout
+- DatabaseReference riderRef
+# void onStart()
+# void onCreate(Bundle)
+- void signOutRider()
+- void initialize()
+- void replaceFragment(Fragment)
+}
+class Location {
++ String LocationName
++ double Latitude
++ String userId
++ <<Create>> Location(String,double,double,String)
++ String getLocationName()
++ void setLocationName(String)
++ double getLatitude()
++ void setLatitude(double)
++ double getLongitude()
++ void setLongitude(double)
++ String getUserId()
++ void setUserId(String)
+}
+class TripHistoryAdapter {
+~ ArrayList<Trip> trips
++ <<Create>> TripHistoryAdapter(ArrayList<Trip>)
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
+}
+class TripHistoryAdapter$ViewHolder {
+~ TextView riderPhone
++ <<Create>> ViewHolder(View)
++ void bind(Trip)
+}
+class PhoneVerificationActivity {
+# void onCreate(Bundle)
+}
+class MainActivity {
+~ Handler handler
+~ LottieAnimationView lottieAnimationView
+~ TextView appName
+# void onCreate(Bundle)
+}
+class ModuleOption {
++ {static} int EMPLOYEE
++ {static} int RIDER
++ {static} int DRIVER
++ {static} int CAR
++ {static} String getReferenceName(int)
+}
+class UserFactory {
++ {static} User getUser(String,String,String,String)
+}
+class AddCarFragment {
+- AppCompatEditText etModel
+- AppCompatButton addCar
+- String model
+- ProgressBar progressBar
++ <<Create>> AddCarFragment()
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void initialize(View)
+- void convertEditTextsToStrings()
+- void clearInput()
+- void addCarDataToDatabase(Car,View)
+}
+class SignInActivity {
+- AppCompatButton button
+- int moduleOption
+- int signOption
+- ProgressBar progressBar
+- AppCompatEditText etPhoneNo
+- TextView loginMessage
+~ FireBaseChecker checker
+# void onCreate(Bundle)
+- void initialize()
+- void setSignUpViewForRider()
+- void setSignInViewForRider()
+- void setSignInTextViewClick()
+- void setSignUpTextViewClick()
+- void setSignInButton()
+- void setSignUpButton()
+}
+abstract class User {
+- String name
+- String email
+- String phoneNumber
+- float rate
++ <<Create>> User(String,String,String,float)
++ <<Create>> User(String,String,String)
++ <<Create>> User()
++ float getRate()
++ void setRate(float)
++ String getName()
++ void setName(String)
++ String getEmail()
++ void setEmail(String)
++ String getPhoneNumber()
++ void setPhoneNumber(String)
+}
+class ViewPastTrips {
+- DatabaseReference tripRef
+~ ArrayList<Trip> tripsHistory
+~ RecyclerView recyclerView
+~ TripHistoryAdapter adapter
+~ String phoneNo
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+}
+class SignUpDriverFragment {
+- AppCompatEditText etName
+- AppCompatButton signUp
+- ProgressBar progressBar
+- String name
++ <<Create>> SignUpDriverFragment()
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void initialize(View)
+- void convertEditTextsToStrings()
+- void clearInput()
++ void addDriverDataToDatabase(Driver,View)
+}
+class Employee {
++ <<Create>> Employee(String,String,String,float)
++ <<Create>> Employee()
++ <<Create>> Employee(String,String,String)
+}
+class DriverActivity {
+# void onCreate(Bundle)
+}
+class DriversWithoutCarsAdapter {
+~ ArrayList<Driver> driversWithoutCar
++ <<Create>> DriversWithoutCarsAdapter(ArrayList<Driver>)
++ DriverWithoutCarViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(DriverWithoutCarViewHolder,int)
++ int getItemCount()
+}
+class DriversWithoutCarsAdapter$DriverWithoutCarViewHolder {
+~ TextView driverPhoneNo
++ <<Create>> DriverWithoutCarViewHolder(View)
+}
+class EmployeeInformationFragment {
+- TextView tvName
++ <<Create>> EmployeeInformationFragment()
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void initialize(View)
+}
+class SearchAvailableTripFragment {
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class Complaint {
+- int complaintID
+- String problem
+- int tripId
+- String date
++ <<Create>> Complaint()
++ <<Create>> Complaint(int,String,int,String)
++ void setDate(String)
++ int getComplaintID()
++ void setComplaintID(int)
++ String getProblem()
++ void setProblem(String)
++ int getTripId()
++ void setTripId(int)
++ String getDate()
+}
+
+
+Serializable <|.. Trip
+Fragment <|-- AssignCarToDriverFragment
+AppCompatActivity <|-- ModuleSelectorActivity
+Serializable <|.. Driver
+User <|-- Driver
+Fragment <|-- AddTrip
+AppCompatActivity <|-- OnBoardActivity
+PagerAdapter <|-- SliderAdapter
+Adapter <|-- AvailableCarsAdapter
+AvailableCarsAdapter +.. AvailableCarsAdapter$AvailableCarsViewHolder
+ViewHolder <|-- AvailableCarsAdapter$AvailableCarsViewHolder
+AppCompatActivity <|-- EmployeeActivity
+Serializable <|.. Rider
+User <|-- Rider
+AppCompatActivity <|-- RiderActivity
+Adapter <|-- TripHistoryAdapter
+TripHistoryAdapter +.. TripHistoryAdapter$ViewHolder
+ViewHolder <|-- TripHistoryAdapter$ViewHolder
+AppCompatActivity <|-- PhoneVerificationActivity
+AppCompatActivity <|-- MainActivity
+Fragment <|-- AddCarFragment
+AppCompatActivity <|-- SignInActivity
+Serializable <|.. User
+Fragment <|-- ViewPastTrips
+Fragment <|-- SignUpDriverFragment
+User <|-- Employee
+AppCompatActivity <|-- DriverActivity
+Adapter <|-- DriversWithoutCarsAdapter
+DriversWithoutCarsAdapter +.. DriversWithoutCarsAdapter$DriverWithoutCarViewHolder
+ViewHolder <|-- DriversWithoutCarsAdapter$DriverWithoutCarViewHolder
+Fragment <|-- EmployeeInformationFragment
+Fragment <|-- SearchAvailableTripFragment
+Serializable <|.. Complaint
+@enduml

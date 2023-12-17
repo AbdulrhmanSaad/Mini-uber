@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Rider's phone number -->
+    <TextView
+        android:id="@+id/rider_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rider's Phone Number: "
+        android:textStyle="bold" />
+
+    <!-- Driver's phone number -->
+    <TextView
+        android:id="@+id/driver_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Driver's Phone Number: "
+        android:textStyle="bold" />
+
+    <!-- Pickup point -->
+    <TextView
+        android:id="@+id/pickupPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pickup Point: "
+        android:textStyle="bold" />
+
+    <!-- Destination -->
+    <TextView
+        android:id="@+id/destination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destination: "
+        android:textStyle="bold" />
+
+    <!-- Time -->
+    <TextView
+        android:id="@+id/tripTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time: "
+        android:textStyle="bold" />
+
+</LinearLayout>

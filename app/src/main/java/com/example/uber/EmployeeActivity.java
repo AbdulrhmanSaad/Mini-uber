@@ -36,7 +36,6 @@ public class EmployeeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         String phoneNo=getIntent().getStringExtra("phoneNo");
         setContentView(R.layout.activity_employee);
-        Objects.requireNonNull(getSupportActionBar()).hide();
         Window window = this.getWindow();
         window.setStatusBarColor(getResources().getColor(R.color.defaultBackground));
         initialize();
@@ -103,7 +102,6 @@ public class EmployeeActivity extends AppCompatActivity {
 
     }
     private void signOutEmployee(){
-        FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(getBaseContext(), SignInActivity.class);
         intent.putExtra("Module Choice", ModuleOption.EMPLOYEE);
         startActivity(intent);

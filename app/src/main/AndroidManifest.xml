@@ -19,12 +19,6 @@
             android:name=".RiderActivity"
             android:exported="false" />
         <activity
-            android:name=".ComplaintDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SignUpDriverActivity"
-            android:exported="false" />
-        <activity
             android:name=".EmployeeActivity"
             android:exported="false" />
         <activity
